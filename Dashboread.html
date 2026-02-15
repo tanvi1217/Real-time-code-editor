@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background: url("tech.png") no-repeat center center/cover;
+    }
+
+    .overlay {
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 500px;
+      padding: 30px;
+      background: rgba(20,20,20,0.85);
+      border-radius: 15px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 0 30px rgba(0,0,0,0.6);
+      backdrop-filter: blur(10px);
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #333;
+      margin: 0 auto 20px auto;
+      border: 4px solid #00bfff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 3rem;
+      color: #00bfff;
+    }
+
+    h2 {
+      margin: 10px 0;
+      color: #00bfff;
+    }
+
+    .info {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 25px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      margin: 10px 0;
+      background: #00bfff;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #0090cc;
+    }
+
+    .logout {
+      background: #444;
+    }
+
+    .logout:hover {
+      background: #333;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="overlay">
+    <div class="card">
+
+      <!-- Profile Image -->
+      <div class="profile-img" id="profileInitial">U</div>
+
+      <!-- User Name -->
+      <h2 id="userName">User Name</h2>
+
+      <!-- Email & Role -->
+      <p class="info" id="userEmail">Email: Loading...</p>
+      <p class="info" id="userRole">Role: Loading...</p>
+
+      <!-- Buttons -->
+      <a href="room.html" class="btn">Join Room</a>
+      <a href="room.html" class="btn">Create Room</a>
+      <a href="#" class="btn">Edit Profile</a>
+      <a href="login.html" class="btn logout">Logout</a>
+
+    </div>
+  </div>
+
+  <script>
+    // Read data from URL params
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name") || "User";
+    const email = params.get("user") || "Not Available";
+    const role = params.get("role") || "Unknown";
+
+    // Show data on page
+    document.getElementById("userName").textContent = name;
+    document.getElementById("userEmail").textContent = "Email: " + email;
+    document.getElementById("userRole").textContent = "Role: " + role;
+
+    // Profile initial
+    const initial = name.charAt(0).toUpperCase();
+    document.getElementById("profileInitial").textContent = initial;
+  </script>
+
+</body>
+</html>
+
+
